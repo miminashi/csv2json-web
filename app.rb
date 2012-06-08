@@ -10,6 +10,7 @@ require 'pp'
 class Csv2Json < Sinatra::Base
   configure do
     mime_type :json, 'application/json'
+    mime_type :jsonp, 'text/javascript'
   end
 
   get '/' do
@@ -31,8 +32,13 @@ class Csv2Json < Sinatra::Base
       data << row
     end
 
-    content_type :json
-    JSON.generate(data)
+    if (params['jsonp'] == '1') and (callback = params['callback'])
+      content_type :jsonp
+      "#{callback}(#{JSON.generate(data)})"
+    else
+      content_type :json
+      JSON.generate(data)
+    end
   end
 
   #post '/documents/create' do

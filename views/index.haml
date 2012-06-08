@@ -2,5 +2,12 @@
 %form{:action => '/documents/convert', :method => 'get'}
   %b CSV URL:
   %input{:type => 'text', :name => 'url', :size => 100}
+  %br
+  %b JSNOP:  
+  %input{:type => 'checkbox', :name => 'jsonp', :value => 1}
+  %br
+  %b JSONP callback:  
+  %input{:type => 'text', :name => 'callback', :value => 'callback'}
+  %br
   %input{:type => 'submit'}
 
