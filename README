@@ -1,0 +1,5 @@
+$ bundle install --path vendor/bundle
+$ bundle exec rackup
+
+source code:
+https://github.com/miminashi/csv2json-web
